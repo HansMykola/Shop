@@ -1,0 +1,79 @@
+﻿<Window x:Class="ClientShop.Views.Employee.AddToSoldGoods"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientShop.Views.Employee"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewModel="clr-namespace:ClientShop.ViewModels.EmployeeWindow"
+        mc:Ignorable="d"
+        Title="AddToSoldGoods" 
+        Height="110" 
+        Width="300" 
+        WindowStyle="None" 
+        ResizeMode="NoResize" 
+        Background="{x:Null}" 
+        Foreground="{x:Null}"
+        x:Name="M_Window">
+
+    <Window.DataContext>
+        <viewModel:AddToSoldGoods_VM/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Rectangle Width="240" 
+                   Height="80" 
+                   RadiusX="15"
+                   RadiusY="15"
+                   Fill="#FFE8E8E8">
+        </Rectangle>
+        <Grid Background="#FF781895" 
+              Width="240" 
+              Height="30" 
+              VerticalAlignment="Top" Margin="30,13,30,0">
+            <TextBlock Text="{Binding Controller.Name}"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       Width="160"
+                       Foreground="White"/>
+        </Grid>
+        <Button Command="{Binding Controller.AddGoodsButton}" 
+                CommandParameter="{Binding ElementName=M_Window}"
+                Width="30" 
+                Height="30"
+                VerticalAlignment="Top" 
+                FontSize="18"
+                Padding="0"
+                Background="#FF781895" Margin="241,13,29,0" BorderBrush="{x:Null}">
+            <materialDesign:PackIcon Kind="Add"
+                                     Padding="0"
+                                     Width="25"
+                                     Height="25"
+                                     Foreground="White" 
+                                     Background="{x:Null}"/>
+        </Button>
+        <Button Command="{Binding Controller.CloseButton}" 
+                CommandParameter="{Binding ElementName=M_Window}"
+                Width="30" 
+                Height="30"
+                VerticalAlignment="Top" 
+                FontSize="18"
+                Padding="0"
+                Background="#FF781895" Margin="29,13,241,0" BorderBrush="{x:Null}">
+            <materialDesign:PackIcon Kind="Close"
+                                     Padding="0"
+                                     Width="25"
+                                     Height="25"
+                                     Foreground="White" 
+                                     Background="{x:Null}"/>
+        </Button>
+
+        <TextBox Width="240" 
+                 Height="40" 
+                 Text="{Binding Controller.Number}" 
+                 materialDesign:HintAssist.Hint="Введіть кількість" 
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                 FontFamily="Champagne &amp; Limousines" 
+                 FontSize="18" Margin="30,46,30,24"/>
+    </Grid>
+</Window>

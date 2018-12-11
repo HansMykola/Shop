@@ -1,0 +1,135 @@
+﻿<Page x:Class="ClientShop.Views.ManagerShipment.ManagerShipment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClientShop.Views.ManagerShipment"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewModel="clr-namespace:ClientShop.ViewModels.ManagerShipment"
+      mc:Ignorable="d" 
+      d:DesignHeight="440" 
+      d:DesignWidth="828"
+      x:Name="M_Window">
+
+    <Page.DataContext>
+        <viewModel:ManagerShipment_VM/>
+    </Page.DataContext>
+
+    <Grid Background="#FFDEDEDE" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="270"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <StackPanel Height="50" 
+                        Grid.Column="0" 
+                        Orientation="Horizontal">
+                <DatePicker SelectedDate="{Binding Controller.MyDatePicker}"
+                            Width="100" 
+                            Height="30"/>
+                <Button Command="{Binding Controller.AddButton}" 
+                        CommandParameter="{Binding ElementName=M_Window}"
+                        Width="120" 
+                        Height="40"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom" 
+                        Content="Додати"
+                        Margin="25, 5, 5, 5"
+                        FontSize="18"
+                        Background="#FF781895"/>
+                <Button Command="{Binding Controller.UpdateButton}" 
+                        CommandParameter="{Binding ElementName=M_Window}"
+                        Width="120" 
+                        Height="40"
+                        Margin="5, 5"
+                        Content="Оновити"
+                        Padding="0"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom" 
+                        FontSize="18"
+                        Background="#FF781895"/>
+                <Button Command="{Binding Controller.DeleteButton}" 
+                        CommandParameter="{Binding ElementName=M_Window}"
+                        Width="120" 
+                        Height="40"
+                        Margin="5, 5"
+                        Content="Видалити"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom" 
+                        FontSize="18"
+                        Background="#FF781895"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <ListView Width="388" Height="390" 
+                          ItemsSource="{Binding Controller.ListShipments}"
+                      SelectedItem="{Binding Controller.SelecteShipment}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Товар" 
+                                        Width="148"
+                                        DisplayMemberBinding="{Binding GoodsName}"/>
+                            <GridViewColumn Header="Ціна (₴)" 
+                                        Width="110"
+                                        DisplayMemberBinding="{Binding Price}"/>
+                            <GridViewColumn Header="Кількість" 
+                                        Width="130"
+                                        DisplayMemberBinding="{Binding Number}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel Width="170">
+                    <TextBlock Margin="0, 40, 0, 10" 
+                         Padding="5, 10"
+                         Text="Тип товару"  
+                         FontFamily="Champagne &amp; Limousines"
+                         Width="90"
+                         Foreground="#FF434344"
+                         FontSize="15"/>
+                    <ComboBox materialDesign:ComboBoxAssist.ClassicMode="True" 
+                          ItemsSource="{Binding Controller.ListTypeGoods}"
+                          SelectedItem="{Binding Controller.SelectTypeGoods}"
+                          FontFamily="Champagne &amp; Limousines" 
+                          Margin="0, 5"
+                          Width="160" 
+                          Foreground="#FF434344" />
+                    <TextBlock Margin="0, 5" 
+                         Padding="25, 10"
+                         Text="Товар"  
+                         FontFamily="Champagne &amp; Limousines"
+                         Width="90"
+                         Foreground="#FF434344"
+                         FontSize="15"/>
+                    <ComboBox materialDesign:ComboBoxAssist.ClassicMode="True" 
+                          ItemsSource="{Binding Controller.ListGoods}"
+                          SelectedItem="{Binding Controller.SelectGoods}"
+                          FontFamily="Champagne &amp; Limousines" 
+                          Margin="0, 5"
+                          Width="160" 
+                          Foreground="#FF434344" />
+                    <TextBox Text="{Binding Controller.Price}" 
+                         Margin="0, 10" 
+                         Width="160"
+                         materialDesign:HintAssist.Hint="Ціна" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         FontFamily="Champagne &amp; Limousines" 
+                         FontSize="15"/>
+                    <TextBox Text="{Binding Controller.Number}" 
+                         Margin="0, 5"
+                         Width="160"
+                         materialDesign:HintAssist.Hint="Кількість" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                         FontFamily="Champagne &amp; Limousines" 
+                         FontSize="15"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+
+            <Calendar SelectedDate="{Binding Controller.MyCalendar}"
+                      Background="#FFDEDEDE"
+                      Width="260" 
+                      Margin="0, 25"/>
+        </StackPanel>
+    </Grid>
+</Page>

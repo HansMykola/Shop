@@ -1,0 +1,68 @@
+﻿<Page x:Class="ClientShop.Views.ManagerEmployee.AddEmployee"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClientShop.Views.ManagerEmployee"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="230" 
+      d:DesignWidth="140"
+      Title="PageUser" 
+      ShowsNavigationUI="False" 
+      Background="Transparent"
+      Foreground="Transparent">
+
+    <Grid>
+        <Rectangle Width="120" 
+                   Height="150" 
+                   RadiusY="5" 
+                   RadiusX="5"
+                   Margin="0, 10, 0, 0"
+                   Fill="White">
+            <Rectangle.Effect>
+                <DropShadowEffect Opacity="0.8" Color="#FF646464"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Rectangle Height="52"
+                   Width="122"
+                   VerticalAlignment="Top"
+                   Margin="0, 40">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#9738a8"/>
+                    <GradientStop Color="#4e1d56" Offset="1"/>
+                    <GradientStop Color="#61246b" Offset="0.546"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Ellipse Height="90" 
+                 Width="90" 
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Top">
+            <Ellipse.Effect>
+                <DropShadowEffect Opacity="0.5" 
+                                  BlurRadius="4" 
+                                  ShadowDepth="4"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="../../Image/who_is_he.jpg"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Button Command="{Binding Controller.AddButton}"
+                Width="85" 
+                Height="78"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Bottom" 
+                Padding="0"
+                Margin="0, 48"
+                Background="#FF781895">
+            <materialDesign:PackIcon Kind="PersonAdd"
+                                     Padding="0"
+                                     Width="80"
+                                     Height="80"
+                                     Foreground="White" 
+                                     Background="{x:Null}"/>
+        </Button>
+    </Grid>
+</Page>

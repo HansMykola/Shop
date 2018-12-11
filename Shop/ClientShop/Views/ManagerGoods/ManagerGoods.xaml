@@ -1,0 +1,151 @@
+﻿<Page x:Class="ClientShop.Views.ManagerGoods.ManagerGoods"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClientShop.Views.ManagerGoods"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewModel="clr-namespace:ClientShop.ViewModels.ManagerGoods"
+      mc:Ignorable="d" 
+      d:DesignHeight="440" 
+      d:DesignWidth="828"
+      x:Name="M_Window">
+
+    <Page.DataContext>
+        <viewModel:ManagerGoods_VM/>
+    </Page.DataContext>
+    
+    <Grid Background="#FFDEDEDE">
+        <StackPanel Orientation="Horizontal" >
+            <ListView Width="460"  
+                      Height="440"
+                      ItemsSource="{Binding Controller.MyListGoods}"
+                      SelectedItem="{Binding Controller.SelectGoods}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" 
+                                    Opacity="0.7" 
+                                    Margin="10">
+                            <StackPanel.Effect>
+                                <DropShadowEffect/>
+                            </StackPanel.Effect>
+                            <StackPanel Width="400" 
+                          Height="120"
+                          Orientation="Horizontal">
+                                <Grid Width="180" Background="#4e1d56">
+                                    <TextBlock
+                                       FontSize="23"
+                                       Foreground="White"
+                                       Text="{Binding Type}" 
+                                       TextAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                                </Grid>
+                                <StackPanel Width="220">
+                                    <Grid Height="60" Background="#FF9738A8" >
+                                        <TextBlock 
+                                           Text="{Binding Name}" 
+                                           Foreground="White"
+                                           FontSize="20"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                                    </Grid>
+                                    <Grid Height="60" Background="#61246b" >
+                                        <TextBlock 
+                                           Text="{Binding Price}" 
+                                           Foreground="White"
+                                           FontSize="20"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Width="360" HorizontalAlignment="Right">
+                <WrapPanel HorizontalAlignment="Center" 
+                           Height="38" 
+                           Margin="0, 42, 0, 0">
+                    <TextBlock Margin="0" 
+                         Padding="0, 10"
+                         Text="Тип товару"  
+                         FontFamily="Champagne &amp; Limousines"
+                         Width="110"
+                         Foreground="#FF434344"
+                         FontSize="20"/>
+                    <ComboBox materialDesign:ComboBoxAssist.ClassicMode="True" 
+                          ItemsSource="{Binding Controller.ListTypeGoods}"
+                          SelectedItem="{Binding Controller.SelectTypeGoods}"
+                          FontFamily="Champagne &amp; Limousines" 
+                          Margin="0, 0"
+                          Height="30"
+                          Width="212" 
+                          Foreground="#FF434344" />
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Center" Height="40" Margin="0, 30, 0, 0">
+                    <TextBox Text="{Binding Controller.Name}" 
+                         Margin="0, 5" 
+                         Width="200"
+                         FontFamily="Champagne &amp; Limousines" 
+                         FontSize="22"/>
+                    <TextBlock Margin="0" 
+                         Padding="0, 10"
+                         Text="Назва товару"  
+                         FontFamily="Champagne &amp; Limousines"
+                         Width="122"
+                         Foreground="#FF434344"
+                         FontSize="19"/>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Center" Height="38" Margin="0, 30, 0, 0">
+                    <TextBlock Margin="0" 
+                         Padding="0, 10"
+                         Text="Ціна товару(₴) "  
+                         FontFamily="Champagne &amp; Limousines"
+                         Width="140"
+                         Foreground="#FF434344"
+                         FontSize="20"/>
+                    <TextBox Text="{Binding Controller.Price}" 
+                         Margin="0, 5" 
+                         Width="214"
+                         FontFamily="Champagne &amp; Limousines" 
+                         FontSize="22"/>
+
+                </WrapPanel>
+                <WrapPanel Margin="0, 40">
+                    <Button Command="{Binding Controller.AddButton}" 
+                        CommandParameter="{Binding ElementName=M_Window}"
+                        Width="140" 
+                        Height="60"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom" 
+                        Content="Додати"
+                        Margin="20, 0, 13, 0"
+                        FontSize="22"
+                        Background="#FF781895"/>
+                    <Button Command="{Binding Controller.UpdateButton}" 
+                        CommandParameter="{Binding ElementName=M_Window}"
+                        Width="140" 
+                        Height="60"
+                        Margin="10, 0"
+                        Content="Оновити"
+                        Padding="0"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom" 
+                        FontSize="22"
+                        Background="#FF781895"/>
+                </WrapPanel>
+                <Button Command="{Binding Controller.DeleteButton}" 
+                        CommandParameter="{Binding ElementName=M_Window}"
+                        Width="160" 
+                        Height="60"
+                        Margin="25, 0"
+                        Content="Видалити"
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Bottom" 
+                        FontSize="22"
+                        Background="#FF781895"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
